@@ -23,13 +23,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.CallApi();
 let callRequest = new Rosetta.CallRequest(); // CallRequest | 
-apiInstance.call(callRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.call(callRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

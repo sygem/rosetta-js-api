@@ -39,22 +39,14 @@ export default class NetworkApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the networkList operation.
-     * @callback module:api/NetworkApi~networkListCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/NetworkListResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get List of Available Networks
      * This endpoint returns a list of NetworkIdentifiers that the Rosetta server supports.
      * @param {module:model/MetadataRequest} metadataRequest 
-     * @param {module:api/NetworkApi~networkListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/NetworkListResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/NetworkListResponse} and HTTP response
      */
-    networkList(metadataRequest, callback) {
+    networkListWithHttpInfo(metadataRequest) {
       let postBody = metadataRequest;
       // verify the required parameter 'metadataRequest' is set
       if (metadataRequest === undefined || metadataRequest === null) {
@@ -77,26 +69,31 @@ export default class NetworkApi {
       return this.apiClient.callApi(
         '/network/list', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the networkOptions operation.
-     * @callback module:api/NetworkApi~networkOptionsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/NetworkOptionsResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get List of Available Networks
+     * This endpoint returns a list of NetworkIdentifiers that the Rosetta server supports.
+     * @param {module:model/MetadataRequest} metadataRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/NetworkListResponse}
      */
+    networkList(metadataRequest) {
+      return this.networkListWithHttpInfo(metadataRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get Network Options
      * This endpoint returns the version information and allowed network-specific types for a NetworkIdentifier. Any NetworkIdentifier returned by /network/list should be accessible here. Because options are retrievable in the context of a NetworkIdentifier, it is possible to define unique options for each network.
      * @param {module:model/NetworkRequest} networkRequest 
-     * @param {module:api/NetworkApi~networkOptionsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/NetworkOptionsResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/NetworkOptionsResponse} and HTTP response
      */
-    networkOptions(networkRequest, callback) {
+    networkOptionsWithHttpInfo(networkRequest) {
       let postBody = networkRequest;
       // verify the required parameter 'networkRequest' is set
       if (networkRequest === undefined || networkRequest === null) {
@@ -119,26 +116,31 @@ export default class NetworkApi {
       return this.apiClient.callApi(
         '/network/options', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the networkStatus operation.
-     * @callback module:api/NetworkApi~networkStatusCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/NetworkStatusResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get Network Options
+     * This endpoint returns the version information and allowed network-specific types for a NetworkIdentifier. Any NetworkIdentifier returned by /network/list should be accessible here. Because options are retrievable in the context of a NetworkIdentifier, it is possible to define unique options for each network.
+     * @param {module:model/NetworkRequest} networkRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/NetworkOptionsResponse}
      */
+    networkOptions(networkRequest) {
+      return this.networkOptionsWithHttpInfo(networkRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * Get Network Status
      * This endpoint returns the current status of the network requested. Any NetworkIdentifier returned by /network/list should be accessible here.
      * @param {module:model/NetworkRequest} networkRequest 
-     * @param {module:api/NetworkApi~networkStatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/NetworkStatusResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/NetworkStatusResponse} and HTTP response
      */
-    networkStatus(networkRequest, callback) {
+    networkStatusWithHttpInfo(networkRequest) {
       let postBody = networkRequest;
       // verify the required parameter 'networkRequest' is set
       if (networkRequest === undefined || networkRequest === null) {
@@ -161,8 +163,21 @@ export default class NetworkApi {
       return this.apiClient.callApi(
         '/network/status', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Get Network Status
+     * This endpoint returns the current status of the network requested. Any NetworkIdentifier returned by /network/list should be accessible here.
+     * @param {module:model/NetworkRequest} networkRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/NetworkStatusResponse}
+     */
+    networkStatus(networkRequest) {
+      return this.networkStatusWithHttpInfo(networkRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

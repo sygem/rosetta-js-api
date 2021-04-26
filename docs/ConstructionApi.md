@@ -30,13 +30,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionCombineRequest = new Rosetta.ConstructionCombineRequest(); // ConstructionCombineRequest | 
-apiInstance.constructionCombine(constructionCombineRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionCombine(constructionCombineRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -75,13 +74,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionDeriveRequest = new Rosetta.ConstructionDeriveRequest(); // ConstructionDeriveRequest | 
-apiInstance.constructionDerive(constructionDeriveRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionDerive(constructionDeriveRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -120,13 +118,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionHashRequest = new Rosetta.ConstructionHashRequest(); // ConstructionHashRequest | 
-apiInstance.constructionHash(constructionHashRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionHash(constructionHashRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -165,13 +162,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionMetadataRequest = new Rosetta.ConstructionMetadataRequest(); // ConstructionMetadataRequest | 
-apiInstance.constructionMetadata(constructionMetadataRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionMetadata(constructionMetadataRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -210,13 +206,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionParseRequest = new Rosetta.ConstructionParseRequest(); // ConstructionParseRequest | 
-apiInstance.constructionParse(constructionParseRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionParse(constructionParseRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -255,13 +250,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionPayloadsRequest = new Rosetta.ConstructionPayloadsRequest(); // ConstructionPayloadsRequest | 
-apiInstance.constructionPayloads(constructionPayloadsRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionPayloads(constructionPayloadsRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -300,13 +294,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionPreprocessRequest = new Rosetta.ConstructionPreprocessRequest(); // ConstructionPreprocessRequest | 
-apiInstance.constructionPreprocess(constructionPreprocessRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionPreprocess(constructionPreprocessRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -345,13 +338,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.ConstructionApi();
 let constructionSubmitRequest = new Rosetta.ConstructionSubmitRequest(); // ConstructionSubmitRequest | 
-apiInstance.constructionSubmit(constructionSubmitRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.constructionSubmit(constructionSubmitRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

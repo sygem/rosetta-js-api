@@ -103,14 +103,12 @@ var Rosetta = require('rosetta');
 
 var api = new Rosetta.AccountApi()
 var accountBalanceRequest = new Rosetta.AccountBalanceRequest(); // {AccountBalanceRequest} 
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.accountBalance(accountBalanceRequest, callback);
+api.accountBalance(accountBalanceRequest).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
 
 ```
 

@@ -24,13 +24,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.AccountApi();
 let accountBalanceRequest = new Rosetta.AccountBalanceRequest(); // AccountBalanceRequest | 
-apiInstance.accountBalance(accountBalanceRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.accountBalance(accountBalanceRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -69,13 +68,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.AccountApi();
 let accountCoinsRequest = new Rosetta.AccountCoinsRequest(); // AccountCoinsRequest | 
-apiInstance.accountCoins(accountCoinsRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.accountCoins(accountCoinsRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

@@ -24,13 +24,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.MempoolApi();
 let networkRequest = new Rosetta.NetworkRequest(); // NetworkRequest | 
-apiInstance.mempool(networkRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.mempool(networkRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -69,13 +68,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.MempoolApi();
 let mempoolTransactionRequest = new Rosetta.MempoolTransactionRequest(); // MempoolTransactionRequest | 
-apiInstance.mempoolTransaction(mempoolTransactionRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.mempoolTransaction(mempoolTransactionRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

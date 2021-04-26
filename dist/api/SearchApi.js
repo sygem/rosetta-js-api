@@ -40,25 +40,16 @@ var SearchApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient["default"].instance;
   }
   /**
-   * Callback function to receive the result of the searchTransactions operation.
-   * @callback module:api/SearchApi~searchTransactionsCallback
-   * @param {String} error Error message, if any.
-   * @param {module:model/SearchTransactionsResponse} data The data returned by the service call.
-   * @param {String} response The complete HTTP response.
-   */
-
-  /**
    * [INDEXER] Search for Transactions
    * `/search/transactions` allows the caller to search for transactions that meet certain conditions. Some conditions include matching a transaction hash, containing an operation with a certain status, or containing an operation that affects a certain account. `/search/transactions` is considered an \"indexer\" endpoint and Rosetta implementations are not required to complete it to adhere to the Rosetta spec. However, any Rosetta \"indexer\" MUST support this endpoint.
    * @param {module:model/SearchTransactionsRequest} searchTransactionsRequest 
-   * @param {module:api/SearchApi~searchTransactionsCallback} callback The callback function, accepting three arguments: error, data, response
-   * data is of type: {@link module:model/SearchTransactionsResponse}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SearchTransactionsResponse} and HTTP response
    */
 
 
   _createClass(SearchApi, [{
-    key: "searchTransactions",
-    value: function searchTransactions(searchTransactionsRequest, callback) {
+    key: "searchTransactionsWithHttpInfo",
+    value: function searchTransactionsWithHttpInfo(searchTransactionsRequest) {
       var postBody = searchTransactionsRequest; // verify the required parameter 'searchTransactionsRequest' is set
 
       if (searchTransactionsRequest === undefined || searchTransactionsRequest === null) {
@@ -73,7 +64,21 @@ var SearchApi = /*#__PURE__*/function () {
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = _SearchTransactionsResponse["default"];
-      return this.apiClient.callApi('/search/transactions', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/search/transactions', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * [INDEXER] Search for Transactions
+     * `/search/transactions` allows the caller to search for transactions that meet certain conditions. Some conditions include matching a transaction hash, containing an operation with a certain status, or containing an operation that affects a certain account. `/search/transactions` is considered an \"indexer\" endpoint and Rosetta implementations are not required to complete it to adhere to the Rosetta spec. However, any Rosetta \"indexer\" MUST support this endpoint.
+     * @param {module:model/SearchTransactionsRequest} searchTransactionsRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SearchTransactionsResponse}
+     */
+
+  }, {
+    key: "searchTransactions",
+    value: function searchTransactions(searchTransactionsRequest) {
+      return this.searchTransactionsWithHttpInfo(searchTransactionsRequest).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
   }]);
 

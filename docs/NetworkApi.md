@@ -25,13 +25,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.NetworkApi();
 let metadataRequest = new Rosetta.MetadataRequest(); // MetadataRequest | 
-apiInstance.networkList(metadataRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.networkList(metadataRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -70,13 +69,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.NetworkApi();
 let networkRequest = new Rosetta.NetworkRequest(); // NetworkRequest | 
-apiInstance.networkOptions(networkRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.networkOptions(networkRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -115,13 +113,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.NetworkApi();
 let networkRequest = new Rosetta.NetworkRequest(); // NetworkRequest | 
-apiInstance.networkStatus(networkRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.networkStatus(networkRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

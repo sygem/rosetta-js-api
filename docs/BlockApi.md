@@ -24,13 +24,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.BlockApi();
 let blockRequest = new Rosetta.BlockRequest(); // BlockRequest | 
-apiInstance.block(blockRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.block(blockRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -69,13 +68,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.BlockApi();
 let blockTransactionRequest = new Rosetta.BlockTransactionRequest(); // BlockTransactionRequest | 
-apiInstance.blockTransaction(blockTransactionRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.blockTransaction(blockTransactionRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

@@ -23,13 +23,12 @@ import Rosetta from 'rosetta';
 
 let apiInstance = new Rosetta.SearchApi();
 let searchTransactionsRequest = new Rosetta.SearchTransactionsRequest(); // SearchTransactionsRequest | 
-apiInstance.searchTransactions(searchTransactionsRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.searchTransactions(searchTransactionsRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

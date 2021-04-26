@@ -44,25 +44,16 @@ var AccountApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient["default"].instance;
   }
   /**
-   * Callback function to receive the result of the accountBalance operation.
-   * @callback module:api/AccountApi~accountBalanceCallback
-   * @param {String} error Error message, if any.
-   * @param {module:model/AccountBalanceResponse} data The data returned by the service call.
-   * @param {String} response The complete HTTP response.
-   */
-
-  /**
    * Get an Account's Balance
    * Get an array of all AccountBalances for an AccountIdentifier and the BlockIdentifier at which the balance lookup was performed. The BlockIdentifier must always be returned because some consumers of account balance data need to know specifically at which block the balance was calculated to compare balances they compute from operations with the balance returned by the node. It is important to note that making a balance request for an account without populating the SubAccountIdentifier should not result in the balance of all possible SubAccountIdentifiers being returned. Rather, it should result in the balance pertaining to no SubAccountIdentifiers being returned (sometimes called the liquid balance). To get all balances associated with an account, it may be necessary to perform multiple balance requests with unique AccountIdentifiers. It is also possible to perform a historical balance lookup (if the server supports it) by passing in an optional BlockIdentifier.
    * @param {module:model/AccountBalanceRequest} accountBalanceRequest 
-   * @param {module:api/AccountApi~accountBalanceCallback} callback The callback function, accepting three arguments: error, data, response
-   * data is of type: {@link module:model/AccountBalanceResponse}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AccountBalanceResponse} and HTTP response
    */
 
 
   _createClass(AccountApi, [{
-    key: "accountBalance",
-    value: function accountBalance(accountBalanceRequest, callback) {
+    key: "accountBalanceWithHttpInfo",
+    value: function accountBalanceWithHttpInfo(accountBalanceRequest) {
       var postBody = accountBalanceRequest; // verify the required parameter 'accountBalanceRequest' is set
 
       if (accountBalanceRequest === undefined || accountBalanceRequest === null) {
@@ -77,27 +68,32 @@ var AccountApi = /*#__PURE__*/function () {
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = _AccountBalanceResponse["default"];
-      return this.apiClient.callApi('/account/balance', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/account/balance', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the accountCoins operation.
-     * @callback module:api/AccountApi~accountCoinsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AccountCoinsResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get an Account's Balance
+     * Get an array of all AccountBalances for an AccountIdentifier and the BlockIdentifier at which the balance lookup was performed. The BlockIdentifier must always be returned because some consumers of account balance data need to know specifically at which block the balance was calculated to compare balances they compute from operations with the balance returned by the node. It is important to note that making a balance request for an account without populating the SubAccountIdentifier should not result in the balance of all possible SubAccountIdentifiers being returned. Rather, it should result in the balance pertaining to no SubAccountIdentifiers being returned (sometimes called the liquid balance). To get all balances associated with an account, it may be necessary to perform multiple balance requests with unique AccountIdentifiers. It is also possible to perform a historical balance lookup (if the server supports it) by passing in an optional BlockIdentifier.
+     * @param {module:model/AccountBalanceRequest} accountBalanceRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccountBalanceResponse}
      */
 
+  }, {
+    key: "accountBalance",
+    value: function accountBalance(accountBalanceRequest) {
+      return this.accountBalanceWithHttpInfo(accountBalanceRequest).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
     /**
      * Get an Account's Unspent Coins
      * Get an array of all unspent coins for an AccountIdentifier and the BlockIdentifier at which the lookup was performed. If your implementation does not support coins (i.e. it is for an account-based blockchain), you do not need to implement this endpoint. If you implementation does support coins (i.e. it is fro a UTXO-based blockchain), you MUST also complete the `/account/balance` endpoint. It is important to note that making a coins request for an account without populating the SubAccountIdentifier should not result in the coins of all possible SubAccountIdentifiers being returned. Rather, it should result in the coins pertaining to no SubAccountIdentifiers being returned. To get all coins associated with an account, it may be necessary to perform multiple coin requests with unique AccountIdentifiers. Optionally, an implementation may choose to support updating an AccountIdentifier's unspent coins based on the contents of the mempool. Note, using this functionality breaks any guarantee of idempotency.
      * @param {module:model/AccountCoinsRequest} accountCoinsRequest 
-     * @param {module:api/AccountApi~accountCoinsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AccountCoinsResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AccountCoinsResponse} and HTTP response
      */
 
   }, {
-    key: "accountCoins",
-    value: function accountCoins(accountCoinsRequest, callback) {
+    key: "accountCoinsWithHttpInfo",
+    value: function accountCoinsWithHttpInfo(accountCoinsRequest) {
       var postBody = accountCoinsRequest; // verify the required parameter 'accountCoinsRequest' is set
 
       if (accountCoinsRequest === undefined || accountCoinsRequest === null) {
@@ -112,7 +108,21 @@ var AccountApi = /*#__PURE__*/function () {
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = _AccountCoinsResponse["default"];
-      return this.apiClient.callApi('/account/coins', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/account/coins', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * Get an Account's Unspent Coins
+     * Get an array of all unspent coins for an AccountIdentifier and the BlockIdentifier at which the lookup was performed. If your implementation does not support coins (i.e. it is for an account-based blockchain), you do not need to implement this endpoint. If you implementation does support coins (i.e. it is fro a UTXO-based blockchain), you MUST also complete the `/account/balance` endpoint. It is important to note that making a coins request for an account without populating the SubAccountIdentifier should not result in the coins of all possible SubAccountIdentifiers being returned. Rather, it should result in the coins pertaining to no SubAccountIdentifiers being returned. To get all coins associated with an account, it may be necessary to perform multiple coin requests with unique AccountIdentifiers. Optionally, an implementation may choose to support updating an AccountIdentifier's unspent coins based on the contents of the mempool. Note, using this functionality breaks any guarantee of idempotency.
+     * @param {module:model/AccountCoinsRequest} accountCoinsRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccountCoinsResponse}
+     */
+
+  }, {
+    key: "accountCoins",
+    value: function accountCoins(accountCoinsRequest) {
+      return this.accountCoinsWithHttpInfo(accountCoinsRequest).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
   }]);
 
