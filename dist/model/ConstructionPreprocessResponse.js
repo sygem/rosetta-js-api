@@ -27,11 +27,12 @@ var ConstructionPreprocessResponse = /*#__PURE__*/function () {
    * Constructs a new <code>ConstructionPreprocessResponse</code>.
    * ConstructionPreprocessResponse contains &#x60;options&#x60; that will be sent unmodified to &#x60;/construction/metadata&#x60;. If it is not necessary to make a request to &#x60;/construction/metadata&#x60;, &#x60;options&#x60; should be omitted.  Some blockchains require the PublicKey of particular AccountIdentifiers to construct a valid transaction. To fetch these PublicKeys, populate &#x60;required_public_keys&#x60; with the AccountIdentifiers associated with the desired PublicKeys. If it is not necessary to retrieve any PublicKeys for construction, &#x60;required_public_keys&#x60; should be omitted.
    * @alias module:model/ConstructionPreprocessResponse
+   * @param options {Object} The options that will be sent directly to `/construction/metadata` by the caller.
    */
-  function ConstructionPreprocessResponse() {
+  function ConstructionPreprocessResponse(options) {
     _classCallCheck(this, ConstructionPreprocessResponse);
 
-    ConstructionPreprocessResponse.initialize(this);
+    ConstructionPreprocessResponse.initialize(this, options);
   }
   /**
    * Initializes the fields of this object.
@@ -42,7 +43,9 @@ var ConstructionPreprocessResponse = /*#__PURE__*/function () {
 
   _createClass(ConstructionPreprocessResponse, null, [{
     key: "initialize",
-    value: function initialize(obj) {}
+    value: function initialize(obj, options) {
+      obj['options'] = options;
+    }
     /**
      * Constructs a <code>ConstructionPreprocessResponse</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.

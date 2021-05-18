@@ -27,11 +27,12 @@ var ConstructionDeriveResponse = /*#__PURE__*/function () {
    * Constructs a new <code>ConstructionDeriveResponse</code>.
    * ConstructionDeriveResponse is returned by the &#x60;/construction/derive&#x60; endpoint.
    * @alias module:model/ConstructionDeriveResponse
+   * @param accountIdentifier {module:model/AccountIdentifier} 
    */
-  function ConstructionDeriveResponse() {
+  function ConstructionDeriveResponse(accountIdentifier) {
     _classCallCheck(this, ConstructionDeriveResponse);
 
-    ConstructionDeriveResponse.initialize(this);
+    ConstructionDeriveResponse.initialize(this, accountIdentifier);
   }
   /**
    * Initializes the fields of this object.
@@ -42,7 +43,9 @@ var ConstructionDeriveResponse = /*#__PURE__*/function () {
 
   _createClass(ConstructionDeriveResponse, null, [{
     key: "initialize",
-    value: function initialize(obj) {}
+    value: function initialize(obj, accountIdentifier) {
+      obj['account_identifier'] = accountIdentifier;
+    }
     /**
      * Constructs a <code>ConstructionDeriveResponse</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
